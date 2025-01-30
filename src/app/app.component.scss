@@ -20,79 +20,52 @@
 }
 
 // Skills
-.experience {
-  padding: 50px;
-  background-color: #f4f4f4;
-}
-
-.content-header h2 {
-  text-align: left;
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 30px;
-}
-
 .skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+
 }
 
 .skill-category {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-category:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  color: black;
+  border-radius: 10px;
 }
 
 .skill-category h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  color: #333;
+  color: black;
+  padding: 10px;
+
 }
 
-.skill-category p {
-  font-size: 16px;
-  color: #555;
-}
-
-.skill-category i {
-  margin-right: 10px;
-  color: #5d5d5d;
-}
-
-.skill-category p i:last-child {
-  margin-right: 0;
-}
-
-.skill-category p {
+.skill-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 10px;
 }
 
-.skill-category p i+i {
-  margin-left: 10px;
+.skill-item {
+  background: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-/* Hover Effect for Skills */
-.skill-category:hover {
-  background-color: #f1f1f1;
+.skill-item:hover {
+  background: #FF6F61;
+  color: white;
 }
 
-.skill-category:hover h3 {
-  color: #007bff;
+.skill-item i {
+  margin-right: 5px;
+  color: #FF6F61;
 }
 
-.skill-category:hover p {
-  color: #444;
+.skill-item:hover i {
+  color: white;
 }

@@ -18,6 +18,110 @@ export class AppComponent implements OnInit {
     "Combining clean design with solid back-end performance.",
     "Working to create seamless user experiences."
   ];
+  skillsData = [
+    {
+      category: "Frontend",
+      skills: [
+        { name: "Angular", icon: "fa-laptop" },
+        { name: "HTML", icon: "fa-code" },
+        { name: "CSS", icon: "fa-paint-brush" },
+        { name: "Bootstrap", icon: "fa-cogs" },
+        { name: "JavaScript", icon: "fa-laptop-code" },
+        { name: "TypeScript", icon: "fa-cogs" }
+      ]
+    },
+    {
+      category: "Backend",
+      skills: [
+        { name: ".NET Core", icon: "fa-server" },
+        { name: "SignalR", icon: "fa-plug" }
+      ]
+    },
+    {
+      category: "Database",
+      skills: [
+        { name: "SQL", icon: "fa-database" },
+        { name: "PostgreSQL", icon: "fa-database" }
+      ]
+    },
+    {
+      category: "Reporting",
+      skills: [
+        { name: "RDLC Reporting", icon: "fa-file-alt" }
+      ]
+    },
+    {
+      category: "Version Control",
+      skills: [
+        { name: "GitLab", icon: "fa-git" },
+        { name: "GitHub", icon: "fa-git" }
+      ]
+    },
+    {
+      category: "Deployment",
+      skills: [
+        { name: "AWS", icon: "fa-cloud" }
+      ]
+    },
+    {
+      category: "Project Management",
+      skills: [
+        { name: "Jira", icon: "fa-trello" },
+        { name: "GitLab Board", icon: "fa-gitlab" }
+      ]
+    },
+    {
+      category: "Concepts",
+      skills: [
+        { name: "OOP", icon: "fa-cogs" },
+        { name: "Scrum/Agile", icon: "fa-cogs" }
+      ]
+    }
+  ];
+  portfolioItems = [
+    {
+      image: "../assets/img/portfolio-1.jpg",
+      title: "Project Name",
+      category: "Web Design",
+      link: "#",
+      previewImage: "../assets/img/portfolio-1.jpg"
+    },
+    {
+      image: "../assets/img/portfolio-2.jpg",
+      title: "Project Name",
+      category: "Web Design",
+      link: "#",
+      previewImage: "../assets/img/portfolio-2.jpg"
+    },
+    {
+      image: "../assets/img/portfolio-3.jpg",
+      title: "Project Name",
+      category: "Web Development",
+      link: "#",
+      previewImage: "../assets/img/portfolio-3.jpg"
+    },
+    {
+      image: "../assets/img/portfolio-4.jpg",
+      title: "Project Name",
+      category: "Web Development",
+      link: "#",
+      previewImage: "../assets/img/portfolio-4.jpg"
+    },
+    {
+      image: "../assets/img/portfolio-5.jpg",
+      title: "Project Name",
+      category: "Digital Marketing",
+      link: "#",
+      previewImage: "../assets/img/portfolio-5.jpg"
+    },
+    {
+      image: "../assets/img/portfolio-6.jpg",
+      title: "Project Name",
+      category: "Digital Marketing",
+      link: "#",
+      previewImage: "../assets/img/portfolio-6.jpg"
+    }
+  ];
   name: string = '';
   email: string = '';
   subject: string = '';

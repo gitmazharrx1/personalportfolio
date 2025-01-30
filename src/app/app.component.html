@@ -75,7 +75,7 @@
         </div>
         <div class="row align-items-center">
           <div class="col-md-6 col-lg-5">
-            <img class="about-image" src="../assets/img/profile.jpg" alt="Image">
+            <img class="about-image" src="../assets/img/profile.gif" alt="Image">
           </div>
           <div class="col-md-6 col-lg-7">
             <p>
@@ -177,48 +177,16 @@
           <h2>Skills</h2>
         </div>
         <div class="skills">
-          <div class="skill-category">
-            <h3>Frontend</h3>
-            <p><i class="fa fa-laptop"></i> Angular | <i class="fa fa-code"></i> HTML | <i
-                class="fa fa-paint-brush"></i> CSS | <i class="fa fa-cogs"></i> Bootstrap | <i
-                class="fa fa-laptop-code"></i> JavaScript | <i class="fa fa-cogs"></i> TypeScript</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Backend</h3>
-            <p><i class="fa fa-server"></i> .NET Core | <i class="fa fa-plug"></i> SignalR</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Database</h3>
-            <p><i class="fa fa-database"></i> SQL | <i class="fa fa-database"></i> PostgreSQL</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Reporting</h3>
-            <p><i class="fa fa-file-alt"></i> RDLC Reporting</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Version Control</h3>
-            <p><i class="fa fa-git"></i> GitLab</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Deployment</h3>
-            <p><i class="fa fa-cloud"></i> AWS</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Project Management</h3>
-            <p><i class="fa fa-trello"></i> Jira | <i class="fa fa-gitlab"></i> GitLab Board</p>
-          </div>
-
-          <div class="skill-category">
-            <h3>Concepts</h3>
-            <p><i class="fa fa-cogs"></i> OOP | <i class="fa fa-cogs"></i> Scrum/Agile</p>
+          <div *ngFor="let category of skillsData" class="skill-category">
+            <h3>{{ category.category }}</h3>
+            <div class="skill-list">
+              <div *ngFor="let skill of category.skills" class="skill-item">
+                <i class="fa" [ngClass]="skill.icon"></i> {{ skill.name }}
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -271,158 +239,24 @@
         <div class="content-header">
           <h2>Portfolio</h2>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <!-- <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".web-des">Design</li>
-              <li data-filter=".web-dev">Development</li>
-              <li data-filter=".dig-mar">Marketing</li>
-            </ul> -->
-          </div>
-        </div>
         <div class="row portfolio-container">
-          <div class="col-lg-4 col-md-6 portfolio-item web-des">
+          <div *ngFor="let item of portfolioItems" class="col-lg-4 col-md-6 portfolio-item"
+            [ngClass]="item.category.toLowerCase().replace(' ', '-')">
             <div class="portfolio-wrap">
               <figure>
-                <img src="../assets/img/portfolio-1.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-1.jpg" data-lightbox="portfolio" data-title="Project Name"
+                <img [src]="item.image" class="img-fluid" alt="">
+                <a [href]="item.previewImage" data-lightbox="portfolio" data-title="{{ item.title }}"
                   class="link-preview" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Web Design</span></a>
-              </figure>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item web-des">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="../assets/img/portfolio-2.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-2.jpg" class="link-preview" data-lightbox="portfolio"
-                  data-title="Project Name" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Web Design</span></a>
-              </figure>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item web-dev">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="../assets/img/portfolio-3.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-3.jpg" class="link-preview" data-lightbox="portfolio"
-                  data-title="Project Name" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Web Development</span></a>
-              </figure>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item web-dev">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="../assets/img/portfolio-4.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-4.jpg" class="link-preview" data-lightbox="portfolio"
-                  data-title="Project Name" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Web Development</span></a>
-              </figure>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item dig-mar">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="../assets/img/portfolio-5.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-5.jpg" class="link-preview" data-lightbox="portfolio"
-                  data-title="Project Name" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Digital Marketing</span></a>
-              </figure>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item dig-mar">
-            <div class="portfolio-wrap">
-              <figure>
-                <img src="../assets/img/portfolio-6.jpg" class="img-fluid" alt="">
-                <a href="../assets/img/portfolio-6.jpg" class="link-preview" data-lightbox="portfolio"
-                  data-title="Project Name" title="Preview"><i class="fa fa-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" href="#">Project Name <span>Digital Marketing</span></a>
+                <a [href]="item.link" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
+                <a class="portfolio-title" [href]="item.link">{{ item.title }} <span>{{ item.category }}</span></a>
               </figure>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- Portfolio Start -->
-
-    <!-- Review Start -->
-    <!-- <div class="review" id="review">
-      <div class="content-inner">
-        <div class="content-header">
-          <h2>Review</h2>
-        </div>
-        <div class="row align-items-center review-slider">
-          <div class="col-md-12">
-            <div class="review-slider-item">
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci. Donec molestie velit id
-                  libero blandit, quis suscipit urna suscipit. Donec aliquet erat eu lacinia iaculis. Ut tempor tellus
-                  eu sem pharetra feugiat.
-                </p>
-              </div>
-              <div class="review-img">
-                <img src="../assets/img/review-1.jpg" alt="Image">
-                <div class="review-name">
-                  <h3>Client Name</h3>
-                  <p>Profession</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="review-slider-item">
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci. Donec molestie velit id
-                  libero blandit, quis suscipit urna suscipit. Donec aliquet erat eu lacinia iaculis. Ut tempor tellus
-                  eu sem pharetra feugiat.
-                </p>
-              </div>
-              <div class="review-img">
-                <img src="../assets/img/review-2.jpg" alt="Image">
-                <div class="review-name">
-                  <h3>Client Name</h3>
-                  <p>Profession</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <div class="review-slider-item">
-              <div class="review-text">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu suscipit orci. Donec molestie velit id
-                  libero blandit, quis suscipit urna suscipit. Donec aliquet erat eu lacinia iaculis. Ut tempor tellus
-                  eu sem pharetra feugiat.
-                </p>
-              </div>
-              <div class="review-img">
-                <img src="../assets/img/review-3.jpg" alt="Image">
-                <div class="review-name">
-                  <h3>Client Name</h3>
-                  <p>Profession</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Review End -->
 
     <!-- Contact Start -->
     <div class="contact" id="contact">
@@ -436,7 +270,7 @@
               <p><i class="fa fa-user"></i>Md. Mazharul Islam</p>
               <p><i class="fa fa-tag"></i>Software Engineer</p>
               <p><i class="fa fa-envelope"></i><a
-                  href="mailto:mazharulIslam.rx1@gmail.com">mazharulIslam.rx1&#64;gmail.com</a></p>
+                  href="mailto:mazharulIslam.rx1@gmail.com">mazharulislam.rx1&#64;gmail.com</a></p>
               <p><i class="fa fa-phone"></i><a href="tel:+1234567890">+8801608800066</a></p>
               <p><i class="fa fa-map-marker"></i>Mirpur-12, Dhaka, Bangladesh</p>
               <div class="social">
