@@ -3,7 +3,7 @@
 /**********************************/
 body {
   color: #666666;
-  background: #495057;
+  background: #495057 !important;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -281,7 +281,7 @@ a:focus {
 }
 
 .back-to-top i {
-  color: #ffffff;
+  color: #222222;
 }
 
 .back-to-top i:hover {
@@ -324,7 +324,7 @@ a:focus {
 
 .header .content-inner {
   padding: 100px 30px;
-  background: url(./assets/img//profile.png) right bottom no-repeat;
+  background: url(../img/profile.png) right bottom no-repeat;
   background-size: contain;
 }
 
@@ -348,7 +348,9 @@ a:focus {
   font-size: 25px;
 }
 
-
+.header .typed-text {
+  display: none;
+}
 
 .header .typed-cursor {
   font-size: 25px;
@@ -507,7 +509,6 @@ a:focus {
 .education .edu-col {
   position: relative;
   width: 100%;
-  height: 140px;
   padding: 20px 0 20px 20px;
   border-left: 1px solid #FF6F61;
   border-bottom: 1px solid #FF6F61;
@@ -583,8 +584,7 @@ a:focus {
   width: 100%;
   padding: 20px 0 20px 20px;
   border-left: 1px solid #FF6F61;
-  // border-bottom: 1px solid #FF6F61;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #FF6F61;
 }
 
 .experience .col-md-6:first-child .exp-col {
@@ -863,7 +863,7 @@ a:focus {
 .review .content-inner {
   position: relative;
   padding: 60px 30px;
-  background: url(./assets/img/quote.png) right bottom no-repeat;
+  background: url(../img/quote.png) right bottom no-repeat;
 }
 
 .review .review-text p {
