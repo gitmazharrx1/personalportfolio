@@ -32,11 +32,17 @@ export class AppComponent implements OnInit {
   deletingSpeed: number = 50; // Speed of deleting
   delayBeforeDelete: number = 1000; // Delay before deleting
   delayBeforeNext: number = 150; // Delay before starting next word
+  yearsDifference: number;
   /**
    *
    */
   constructor() {
+    const startDate = new Date(2023, 1, 1); // 1st February 2023
+    const currentDate = new Date();
+    const timeDiff = currentDate.getTime() - startDate.getTime();
 
+    // Convert milliseconds to years and round the result
+    this.yearsDifference = Math.round(timeDiff / (1000 * 3600 * 24 * 365.25));
   }
   ngOnInit() {
     this.startTypingEffect()
