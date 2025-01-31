@@ -69,3 +69,30 @@
 .skill-item:hover i {
   color: white;
 }
+
+
+.portfolio-container {
+  display: flex;
+  flex-wrap: wrap;
+  // gap: 15px;
+}
+
+.portfolio-wrap {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.link-preview{
+  cursor: pointer !important;
+}
+
+.link-details {
+  right: 10px;
+}
+
+.close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1050;
+}

@@ -37,9 +37,11 @@
       </nav>
     </div>
     <div class="sidebar-footer">
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a class="btn" target="_blank" href="https://www.facebook.com/mazhar.rx1/"><i class="fab fa-facebook-f"></i></a>
+      <a class="btn" target="_blank" href="https://www.linkedin.com/in/mazharul-islam-web11/"><i
+          class="fab fa-linkedin-in"></i></a>
+      <a class="btn" target="_blank" href="https://x.com/mazhar_rx1"><i class="fab fa-twitter"></i></a>
+      <a class="btn" target="_blank" href="https://github.com/gitmazharrx1"><i class="fab fa-github"></i></a>
     </div>
   </div>
   <div class="content">
@@ -181,7 +183,7 @@
             <h3>{{ category.category }}</h3>
             <div class="skill-list">
               <div *ngFor="let skill of category.skills" class="skill-item">
-                <i class="fa" [ngClass]="skill.icon"></i> {{ skill.name }}
+                <i class="" [ngClass]="skill.icon"></i> {{ skill.name }}
               </div>
             </div>
           </div>
@@ -240,19 +242,25 @@
           <h2>Portfolio</h2>
         </div>
         <div class="row portfolio-container">
-          <div *ngFor="let item of portfolioItems" class="col-lg-4 col-md-6 portfolio-item"
+          <div *ngFor="let item of portfolioItems" class="col-md-6 portfolio-item"
             [ngClass]="item.category.toLowerCase().replace(' ', '-')">
             <div class="portfolio-wrap">
               <figure>
-                <img [src]="item.image" class="img-fluid" alt="">
-                <a [href]="item.previewImage" data-lightbox="portfolio" data-title="{{ item.title }}"
-                  class="link-preview" title="Preview"><i class="fa fa-eye"></i></a>
-                <a [href]="item.link" class="link-details" title="More Details"><i class="fa fa-link"></i></a>
-                <a class="portfolio-title" [href]="item.link">{{ item.title }} <span>{{ item.category }}</span></a>
+                <img [src]="item.image" class="img-fluid" alt="{{ item.title }}">
+                <a (click)="openModal(item)" class="link-preview" title="Preview">
+                  <i class="fa fa-eye"></i>
+                </a>
+                <a [href]="item.link" class="link-details" title="More Details" target="_blank">
+                  <i class="fa fa-link"></i>
+                </a>
+                <a class="portfolio-title" (click)="openModal(item)">
+                  {{ item.title }} <span>{{ item.category }}</span>
+                </a>
               </figure>
             </div>
           </div>
         </div>
+
 
       </div>
     </div>
@@ -274,11 +282,12 @@
               <p><i class="fa fa-phone"></i><a href="tel:+1234567890">+8801608800066</a></p>
               <p><i class="fa fa-map-marker"></i>Mirpur-12, Dhaka, Bangladesh</p>
               <div class="social">
-                <a class="btn" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn" href=""><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn" href=""><i class="fab fa-instagram"></i></a>
-                <a class="btn" href=""><i class="fab fa-youtube"></i></a>
+                <a class="btn" target="_blank" href="https://www.facebook.com/mazhar.rx1/"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a class="btn" target="_blank" href="https://www.linkedin.com/in/mazharul-islam-web11/"><i
+                    class="fab fa-linkedin-in"></i></a>
+                <a class="btn" target="_blank" href="https://x.com/mazhar_rx1"><i class="fab fa-twitter"></i></a>
+                <a class="btn" target="_blank" href="https://github.com/gitmazharrx1"><i class="fab fa-github"></i></a>
               </div>
             </div>
           </div>
@@ -345,3 +354,47 @@
     <!-- Footer Start -->
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="portfolioModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">{{ selectedProject?.title }}</h5>
+      </div>
+
+      <!-- Image Slider -->
+      <div class="modal-body">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let img of selectedProject?.sliderImages; let i = index" class="carousel-item"
+              [ngClass]="{ 'active': i === 0 }">
+              <img [src]="img" class="d-block w-100" [alt]="selectedProject?.title">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Details -->
+      <div class="modal-body">
+        <div [innerHTML]="selectedProject?.description"></div>
+
+        <a *ngIf="selectedProject?.link" [href]="selectedProject.link" target="_blank" class="btn btn-primary">
+          View Project
+        </a>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-danger close-btn" data-bs-dismiss="modal">
+    Close
+  </button>
+</div>
+
+<!-- Close Button Outside the Modal -->
