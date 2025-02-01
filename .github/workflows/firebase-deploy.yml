@@ -40,8 +40,7 @@ jobs:
           echo "$FIREBASE_TOKEN" | base64 --decode > "$HOME/firebase-service-account.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
-      # Deploy to Firebase Hosting using the Firebase CLI
+      # Firebase deploy using service account
       - name: Deploy to Firebase Hosting
         run: |
-          firebase use --project mazharlabs # Replace with your Firebase project ID
-          firebase deploy --only hosting
+          firebase --project mazharlabs deploy --only hosting
