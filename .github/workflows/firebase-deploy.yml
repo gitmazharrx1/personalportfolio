@@ -29,10 +29,11 @@ jobs:
 
     - name: Authenticate with Firebase using FIREBASE_TOKEN
       run: |
-        echo "$FIREBASE_TOKEN" | firebase login:ci --token
+        echo "$FIREBASE_TOKEN" > $HOME/firebase-service-account.json
+        export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
     - name: Set Firebase project
-      run: firebase use --add your-firebase-project-id --alias hosting
+      run: firebase use --project your-firebase-project-id --alias hosting
 
     - name: Deploy to Firebase Hosting
       run: firebase deploy --only hosting --project your-firebase-project-id
