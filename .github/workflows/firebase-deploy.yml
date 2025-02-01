@@ -43,5 +43,5 @@ jobs:
       # Deploy to Firebase Hosting using the Firebase CLI
       - name: Deploy to Firebase Hosting
         run: |
-          firebase use --add  # Ensure we're using the correct Firebase project
+          firebase use --project mazharlabs # Replace with your Firebase project ID
           firebase deploy --only hosting
