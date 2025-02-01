@@ -29,8 +29,10 @@ jobs:
           curl -sL https://firebase.tools | bash
           export PATH="$PATH:/home/runner/.firebase-tools/bin"
 
-      - name: Authenticate with Firebase using the token
-        run: firebase use --token "$FIREBASE_TOKEN"
+      - name: Decode Firebase service account key
+        run: |
+          echo "$FIREBASE_TOKEN" | base64 --decode > "$HOME/firebase-service-account.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+        run: firebase deploy --only hosting
