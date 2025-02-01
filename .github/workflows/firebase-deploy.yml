@@ -40,7 +40,12 @@ jobs:
           echo "$FIREBASE_TOKEN" | base64 --decode > "$HOME/firebase-service-account.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
-      # Firebase deploy using service account
+      # Login with Firebase service account using --token flag
+      - name: Firebase Authentication (via service account)
+        run: |
+          firebase auth:import "$HOME/firebase-service-account.json" --hash-algo=SCRYPT --rounds=8 --mem-cost=14
+
+      # Deploy to Firebase Hosting using the service account key
       - name: Deploy to Firebase Hosting
         run: |
-          firebase --project mazharlabs deploy --only hosting
+          firebase deploy --project mazharlabs --only hosting
