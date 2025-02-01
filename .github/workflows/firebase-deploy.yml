@@ -27,13 +27,10 @@ jobs:
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
 
-    - name: Authenticate with Firebase using FIREBASE_TOKEN
+    - name: Authenticate with Firebase using the service account key
       run: |
         echo "$FIREBASE_TOKEN" > $HOME/firebase-service-account.json
         export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
-
-    - name: Set Firebase project
-      run: firebase use --project your-firebase-project-id --alias hosting
-
+      
     - name: Deploy to Firebase Hosting
-      run: firebase deploy --only hosting --project your-firebase-project-id
+      run: firebase deploy --only hosting --token "$FIREBASE_TOKEN"
