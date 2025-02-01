@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code from GitHub repository
+      # Checkout the code from the GitHub repository
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Set up Node.js (using version 18)
       - name: Set up Node.js
@@ -34,13 +34,14 @@ jobs:
           curl -sL https://firebase.tools | bash
           export PATH="$PATH:/home/runner/.firebase-tools/bin"
 
-      # Decode Firebase service account key and set environment variable
-      - name: Decode Firebase service account key
+      # Authenticate Firebase CLI using FIREBASE_TOKEN
+      - name: Authenticate Firebase CLI
         run: |
-          echo "$FIREBASE_TOKEN" | base64 --decode > "$HOME/firebase-service-account.json"
-          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
+          firebase use --add mazharlabs
+          echo "FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}"
+          firebase login:ci --token "${{ secrets.FIREBASE_TOKEN }}"
 
-      # Deploy to Firebase Hosting using the service account key
+      # Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
         run: |
           firebase deploy --project mazharlabs --only hosting
