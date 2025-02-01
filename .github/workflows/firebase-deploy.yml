@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Use the appropriate Node.js version for your project
+        node-version: '18'  # Use Node.js version 18 or higher
 
     - name: Install dependencies
       run: npm install
@@ -27,10 +27,12 @@ jobs:
     - name: Install Firebase CLI
       run: npm install -g firebase-tools
 
-    - name: Authenticate to Firebase
-      run: firebase use --add
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Store your Firebase CI token as a GitHub secret
+    - name: Authenticate with Firebase using Service Account Key
+      run: |
+        echo "${{ secrets.FIREBASE_TOKEN }}" > $HOME/firebase-key.json
+        export GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-key.json
 
     - name: Deploy to Firebase Hosting
-      run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}  # Deploy to Firebase Hosting
+      run: |
+        firebase use --add your-firebase-project-id --alias hosting  # Specify your Firebase project ID
+        firebase deploy --only hosting
