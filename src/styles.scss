@@ -259,6 +259,17 @@ a:focus {
   .wrapper .content {
     padding: 15px;
   }
+  .header .content-inner{
+    min-height: 500px;
+  }
+  .header .content-inner{
+    padding: 0 !important;
+    padding-top: 210px!important;
+  }
+  .header h1 {
+    color: #fff !important;
+    background: rgb(0 0 0 / 33%);
+}
 }
 
 
