@@ -28,20 +28,7 @@ jobs:
       - name: Build Angular project
         run: npm run build -- --configuration=production
 
-      # Set up Firebase CLI
-      - name: Set up Firebase CLI
-        run: |
-          curl -sL https://firebase.tools | bash
-          export PATH="$PATH:/home/runner/.firebase-tools/bin"
-
-      # Authenticate Firebase CLI using FIREBASE_TOKEN
-      - name: Authenticate Firebase CLI
-        run: |
-          firebase use --add mazharlabs
-          echo "FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}"
-          firebase login:ci --token "${{ secrets.FIREBASE_TOKEN }}"
-
       # Deploy to Firebase Hosting
       - name: Deploy to Firebase Hosting
         run: |
-          firebase deploy --project mazharlabs --only hosting
+          firebase deploy --token "$FIREBASE_TOKEN"
