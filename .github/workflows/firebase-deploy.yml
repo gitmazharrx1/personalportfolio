@@ -10,29 +10,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the code from GitHub repository
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Set up Node.js (using version 18)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      # Install project dependencies
       - name: Install dependencies
         run: npm install
 
+      # Build Angular project for production
       - name: Build Angular project
         run: npm run build -- --configuration=production
 
+      # Set up Firebase CLI
       - name: Set up Firebase CLI
         run: |
           curl -sL https://firebase.tools | bash
           export PATH="$PATH:/home/runner/.firebase-tools/bin"
 
+      # Decode the Firebase service account key from GitHub secret and set it up
       - name: Decode Firebase service account key
         run: |
           echo "$FIREBASE_TOKEN" | base64 --decode > "$HOME/firebase-service-account.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-service-account.json"
 
+      # Deploy to Firebase Hosting using the Firebase CLI
       - name: Deploy to Firebase Hosting
-        run: firebase deploy --only hosting
+        run: |
+          firebase use --add  # Ensure we're using the correct Firebase project
+          firebase deploy --only hosting
