@@ -679,7 +679,17 @@ a:focus {
 .service .srv-col {
   position: relative;
   width: 100%;
+  min-height: 190px;
   margin-bottom: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding: 13px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.service .srv-col:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  transform: translateY(-5px); /* Slight upward movement */
 }
 
 .service .srv-col i {
